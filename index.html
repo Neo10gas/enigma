@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+    50% { opacity: 0.7; }
+    100% { opacity: 1; }
+}
+
+.matrix {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    opacity: 0.08;
+    background-image: repeating-linear-gradient(
+        to bottom,
+        #00ff66 0px,
+        #00ff66 1px,
+        transparent 2px,
+        transparent 4px
+    );
+}
+</style>
+</head>
+<body>
+
+<div class="matrix"></div>
+
+<div class="container">
+    <h1>=== SISTEMA DI DECRIPTAZIONE ===</h1>
+
+    <div id="encrypted">
+        LO VHFRQGR LQGLCLR VL WURYD GLHWUR GL YRL
+    </div>
+
+    <p>Inserisci il giorno di nascita del prof Di Stasio</p>
+
+    <input type="number" id="code" placeholder="???">
+
+    <br>
+
+    <button onclick="decrypt()">DECRIPTA</button>
+
+    <div id="result"></div>
+</div>
+
+<audio id="music" autoplay loop>
+    <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8d87fdbf4.mp3?filename=beautiful-piano-113997.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+function decrypt() {
+    let code = document.getElementById("code").value;
+    let result = document.getElementById("result");
+
+    if(code == 10) {
+        result.innerHTML = "<br>DECRIPTAZIONE IN CORSO...";
+
+        setTimeout(() => {
+            result.innerHTML = "<br><strong>IL SECONDO INDIZIO SI TROVA DIETRO DI VOI</strong>";
+        }, 2500);
+    }
+    else {
+        result.innerHTML = "<br>ACCESSO NEGATO - RITENTA";
+    }
+}
+</script>
+
+</body>
+</html>
