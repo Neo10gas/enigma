@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Enigma</title>
+
+<style>
+
+body{
+background:black;
+color:#00ff66;
+font-family:Courier New;
+text-align:center;
+padding-top:100px;
+}
+
+input{
+background:black;
+color:#00ff66;
+border:2px solid #00ff66;
+padding:10px;
+font-size:20px;
+}
+
+button{
+background:black;
+color:#00ff66;
+border:2px solid #00ff66;
+padding:10px;
+margin-top:20px;
+font-size:20px;
+}
+
+#result{
+margin-top:30px;
+font-size:28px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h1>=== SISTEMA DI DECRIPTAZIONE ===</h1>
+
+<p style="font-size:25px;">
+LO VHFRQGR LQGLCLR VL WURYD GLHWUR GL YRL
+</p>
+
+<p>
+Inserisci il giorno di nascita del prof Di Stasio
+</p>
+
+<input type="number" id="code">
+
+<br>
+
+<button onclick="decrypt()">
+DECRIPTA
+</button>
+
+<div id="result"></div>
+
+<script>
+
+function decrypt(){
+
+let code=document.getElementById('code').value;
+
+if(code==10){
+
+document.getElementById('result').innerHTML=
+'IL SECONDO INDIZIO SI TROVA DIETRO DI VOI';
+
+}else{
+
+document.getElementById('result').innerHTML=
+'ACCESSO NEGATO - RITENTA';
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
