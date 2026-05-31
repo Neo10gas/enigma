@@ -1,42 +1,71 @@
 <!DOCTYPE html>
-<html>
+<html lang="it">
+
 <head>
-<title>Enigma</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Sistema di Decriptazione</title>
 
 <style>
 
 body{
-background:black;
-color:#00ff66;
-font-family:Courier New;
-text-align:center;
-padding-top:100px;
+    background:black;
+    color:#00ff66;
+    font-family:Courier New, monospace;
+    text-align:center;
+    padding-top:80px;
+    margin:0;
+}
+
+h1{
+    text-shadow:0 0 10px #00ff66;
+}
+
+#encrypted{
+    font-size:26px;
+    margin-top:30px;
+    margin-bottom:30px;
+    letter-spacing:2px;
+}
+
+#hint{
+    margin-top:20px;
+    font-size:18px;
 }
 
 input{
-background:black;
-color:#00ff66;
-border:2px solid #00ff66;
-padding:10px;
-font-size:20px;
+    background:black;
+    color:#00ff66;
+    border:2px solid #00ff66;
+    padding:10px;
+    font-size:22px;
+    width:120px;
+    text-align:center;
 }
 
 button{
-background:black;
-color:#00ff66;
-border:2px solid #00ff66;
-padding:10px;
-margin-top:20px;
-font-size:20px;
+    background:black;
+    color:#00ff66;
+    border:2px solid #00ff66;
+    padding:10px 20px;
+    margin-top:20px;
+    font-size:18px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#00ff66;
+    color:black;
 }
 
 #result{
-margin-top:30px;
-font-size:28px;
+    margin-top:30px;
+    font-size:28px;
+    text-shadow:0 0 10px #00ff66;
 }
 
 </style>
-
 </head>
 
 <body>
@@ -44,20 +73,24 @@ font-size:28px;
 <h1>=== SISTEMA DI DECRIPTAZIONE ===</h1>
 
 <p style="font-size:18px;">
-"La legenda è scritta, ha effetto la tinta..."
+"La legenda è scritta, ha effetto la tinta...
+utilizza la luce di Wood per scoprire."
 </p>
 
-<br>
-
-<p style="font-size:25px;">
+<div id="encrypted">
 LO VHFRQGR LQGLCLR VL WURYD GLHWUR GL YRL
+</div>
+
+<p id="hint">
+Inserisci un numero da 0 a 99 per decriptare
 </p>
 
-<p>
-Inserisci il giorno di nascita del prof Di Stasio
-</p>
-
-<input type="number" id="code">
+<input
+    type="number"
+    id="code"
+    min="0"
+    max="99"
+    placeholder="0-99">
 
 <br>
 
@@ -69,21 +102,40 @@ DECRIPTA
 
 <script>
 
-function decrypt(){
+let tentativi = 0;
 
-let code=document.getElementById('code').value;
+function decrypt() {
 
-if(code==10){
+    let code = document.getElementById("code").value;
+    let result = document.getElementById("result");
+    let hint = document.getElementById("hint");
 
-document.getElementById('result').innerHTML=
-'IL SECONDO INDIZIO SI TROVA DIETRO DI VOI';
+    tentativi++;
 
-}else{
+    if(code == 10){
 
-document.getElementById('result').innerHTML=
-'ACCESSO NEGATO - RITENTA';
+        result.innerHTML = "DECRIPTAZIONE IN CORSO...";
 
-}
+        setTimeout(function(){
+
+            result.innerHTML =
+            "<strong>IL SECONDO INDIZIO SI TROVA DIETRO DI VOI</strong>";
+
+        }, 2500);
+
+    } else {
+
+        result.innerHTML =
+        "ACCESSO NEGATO - RITENTA";
+
+        if(tentativi >= 2){
+
+            hint.innerHTML =
+            "Inserisci il giorno di nascita del professore Di Stasio per decriptare";
+
+        }
+
+    }
 
 }
 
